@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        loadFragment (new HomeFragment());
+        loadFragment (new Fragment());
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -37,11 +37,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         NavigationUI.setupWithNavController(navView, navController);
     }
 
+
+
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         Fragment fragment = null;
 
-        switch (item.getItemId()){
+        switch (menuItem.getItemId()){
             case R.id.navigation_home:
                 fragment = new HomeFragment();
                 break;
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                     .replace(R.id.nav_host_fragment, fragment)
                     .commit();
             return true;
+
         }
         return false;
     }
